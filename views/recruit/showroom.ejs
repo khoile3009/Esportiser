@@ -1,0 +1,100 @@
+<%include ../partials/header%>
+
+<div class="container">
+	<header class="jumbotron banner" id='lol-image' style='margin-bottom: 0;'>
+		<div class="container" >
+			<p>
+				<a href="/recruit/new" class="btn btn-primary btn-lg">Recruit a teammate</a>
+			</p>
+		</div>
+		
+	</header>
+	<div class="row" style="margin: 20px 0px">
+		<form class="form-inline" action="/recruit" method="GET">
+			<label for="number">Number Player</label>
+			<select class="form-control selectpicker" name="number" multiple>
+				<option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option>
+			</select>
+			<label for="queue">Queue</label>
+			<select class="form-control selectpicker" name="queue" multiple>
+						<option value="Solo/Duo">Solo/Duo</option>
+						<option value="Flex">Flex</option>
+						<option value="Normal">Normal</option>
+						<option value="Amateur">Amateur</option>
+						<option value="Professional">Professional</option>
+			</select>
+			<label for="rank">Rank</label>
+			<select class="form-control selectpicker" name="rank" multiple>
+						<option value="Bronze">Bronze</option>
+						<option value="Silver">Silver</option>
+						<option value="Gold">Gold</option>
+						<option value="Platinum">Platinum</option>
+						<option value="Diamond">Diamond</option>
+						<option value="Master">Master</option>
+						<option value="Grandmaster">Grandmaster</option>
+						<option value="Challenger">Challenger</option>
+						<option value="Any">Any</option>
+			</select>
+			<label for="position">Positions</label>
+			<select class="form-control selectpicker" name="position" multiple>
+				<option value="Top">Top</option>
+				<option value="Jungle">Jungle</option>
+				<option value="Mid">Middle</option>
+				<option value="Bot">Bottom</option>
+				<option value="Support">Support</option>
+			</select>
+			<button class="btn btn-lg btn-primary float-right">Submit</button>
+		</form>
+	</div>
+	<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+		<%recruits.forEach(function(recruit){%>
+			<div class="col-md-2 col-sm-4" >
+				<div class="thumbnail" style='background-color: rgb(197, 250, 240); border: 2px solid; border-radius: 25px'>
+					<img src="/lol/emblems/Emblem_<%=recruit.rank%>.png">
+					<div class='row'>
+						<%recruit.position.forEach(function(pos){%>
+							<img class='col-md-3 col-sm-3' src="/lol/positions/Position_<%=recruit.rank%>-<%=pos%>.png">
+						<%});%>
+					</div>
+					<div class="caption">
+						<h4><%=recruit.queue%></h4>
+						<h4><%=recruit.user.username%></h4>
+					</div>
+					<p>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+							Info
+						</button>
+					</p>
+				</div>
+				
+				
+			</div>
+		<%});%>
+	</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+	      		<div class="modal-header">
+	       			<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	         		 	<span aria-hidden="true">&times;</span>
+	        		</button>
+	      		</div>
+      				<div class="modal-body">
+        		
+      			</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        		<button type="button" class="btn btn-primary">Apply</button>
+	      		</div>
+    		</div>
+  	    </div>
+    </div>
+</div>
+
+
+
+<%include ../partials/footer%>

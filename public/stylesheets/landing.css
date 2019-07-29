@@ -1,0 +1,43 @@
+#landing{
+	background-image: url(../landing.JPG);
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	background-attachment: fixed;
+  	height: 100%; 
+}
+
+body, html{
+	height: 100%;
+	margin: 0 auto;
+}
+#Name{
+	margin: 0 0;
+	color: white;
+	font-size: 60px;
+	font-weight: 700;
+	text-align: center;
+}
+
+#moto{
+	margin: 0 0;
+	text-align: center;
+	color: white;
+}
+
+.route{
+	padding-top: 30px
+}
+
+.route a{
+	margin: 20px;
+}
+#content{
+	position: absolute;
+    margin: auto;
+    display: block;
+    bottom: 0px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}

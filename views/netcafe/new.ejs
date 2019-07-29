@@ -1,0 +1,32 @@
+<%include ../partials/header%>
+<div class="container">
+		<h1 style="text-align: center">Create new Internet Cafe</h1>
+		<div style="width:100%; margin: 25px auto;">
+			<form action="/netcafe" method="POST">
+				<div class="form-group">
+					<p>Name</p>
+					<input class="form-control" type="text" name="name" placeholder="name">
+				</div>
+				<div class="form-group">
+					<p>Address</p>
+					<input class="form-control" type="text" name="address" placeholder="address">
+				</div>
+				<div class="form-group">
+					<p>Description</p>
+					<input class="form-control" type="text" name="description" placeholder="description">
+				</div>
+				<div class="form-group">
+					<p>image</p>
+					<input class="form-control" type="text" name="image" placeholder="image">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block">Submit</button>
+				</div>	
+			</form>
+			<a href="/campgrounds">Go Back</a>
+		
+	</div>
+	
+</div>
+
+<%include ../partials/footer%>
