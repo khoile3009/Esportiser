@@ -1,0 +1,56 @@
+<div class="row" >
+		<%if(!search.page){search.page='1'}%>
+		<nav aria-label="Page navigation example" style="margin: 20px auto">
+  			<ul class="pagination">
+  				<%if(parseInt(search.page) > 2){%>
+	    			<li class="page-item">
+	      				<a class="page-link" href="
+	      				<%var previousSetting = {};Object.keys(search).forEach(function(key){
+								if(key != 'page'){
+									previousSetting[key] = search[key]
+								}
+								else{previousSetting[key] = parseInt(search[key]) - 2}
+							});%><%= '/recruit/?' +stringify(previousSetting)%>" aria-label="Previous">
+	       					 <span aria-hidden="true">&laquo;</span>
+	      				</a>
+	    			</li>
+	    		<%}%>
+	    		<%if(parseInt(search.page) > 1){%>
+			    	<li class="page-item"><a class="page-link" href="
+			    		<%var previousSetting = {};Object.keys(search).forEach(function(key){
+								if(key != 'page'){
+									previousSetting[key] = search[key]
+								}
+								else{previousSetting[key] = parseInt(search[key]) - 1}
+							});%><%= '/recruit/?' +stringify(previousSetting)%>
+							"><%=parseInt(search.page) - 1%></a></li>
+			    <% }%>
+
+			    <li class="page-item active"><a class="page-link" href="#"><%=search.page%></a></li>
+
+			    <%if(maxPage - parseInt(search.page) > 0){%>
+			    	<li class="page-item"><a class="page-link" href="
+			    		<%var previousSetting = {};Object.keys(search).forEach(function(key){
+								if(key != 'page'){
+									previousSetting[key] = search[key]
+								}
+								else{previousSetting[key] = parseInt(search[key
+									]) + 1}
+							});%><%= '/recruit/?' +stringify(previousSetting)%>"><%=parseInt(search.page) + 1%></a></li>
+				<%}%>
+			    <%if(maxPage - parseInt(search.page) > 1){%>
+				    <li class="page-item">
+					    <a class="page-link" href="
+					    <%var previousSetting = {};Object.keys(search).forEach(function(key){
+								if(key != 'page'){
+									previousSetting[key] = search[key]
+								}
+								else{previousSetting[key] = parseInt(search[key]) + 2}
+							});%><%= '/recruit/?' +stringify(previousSetting)%>" aria-label="Next">
+					     	<span aria-hidden="true">&raquo;</span>
+					     </a>
+	    			</li>
+	    		<%}%>
+  			</ul>
+		</nav>
+	</div>

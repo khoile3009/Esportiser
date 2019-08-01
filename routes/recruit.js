@@ -1,22 +1,32 @@
 var express 	= require("express");
 var router  	= express.Router();
 var Recruit 	= require("../models/recruit.js")
-
+var map			= require("../public/javascript/map.js")
+var queryString = require("querystring")
 
 router.get("/recruit", function(req,res){
-	Recruit.find(req.query, function(err, recruits){
+	var search = {};
+	Object.keys(req.query).forEach(function(key){
+		if(key != 'page'){
+			search[key] = req.query[key]
+		}
+	});
+	Recruit.find(search, function(err, recruits){
 		if(err){
 			console.log(err);
 		}
 		else{
-			console.log(recruits)
-			res.render("recruit/showroom", {search: req.query, recruits:recruits})
+			if(req.query.page){
+				res.render("recruit/showroom", {stringify:queryString.stringify,maxPage:Math.ceil(recruits.length / map.maxBanner), map: map, search: req.query, recruits:recruits.slice((parseInt(req.query.page) - 1) * map.maxBanner,parseInt(req.query.page) * map.maxBanner)})
+			}
+			else{
+				res.render("recruit/showroom", {stringify:queryString.stringify,maxPage:Math.ceil(recruits.length / map.maxBanner),map: map, search: req.query, recruits:recruits.slice(0,map.maxBanner)});
+			}
 		}
 	})
 })
 
 router.post("/recruit", isLoggedIn, function(req,res){
-	console.log(req.body)
 	var user = {id: req.user._id,
 		username: req.user.username};
 	var number = parseInt(req.body.number);
@@ -24,13 +34,15 @@ router.post("/recruit", isLoggedIn, function(req,res){
 	var rank = req.body.rank;
 	var position = req.body.position
 	var description = req.body.description;
+	var exprire_at = new Date(new Date().getTime() + req.body.expire_at * 60 * 1000)
 	var newRecruit = {
 		user:user,
 		number: number,
 		description:description,
 		queue: queue,
 		rank: rank,
-		position: position
+		position: position,
+		exprire_at: exprire_at
 	};
 	Recruit.create(newRecruit,function(err,recruit){
 		if(err){

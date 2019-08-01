@@ -1,0 +1,114 @@
+<div class="row" style="margin: 20px 0px">
+		<form class="form-inline" action="/recruit" method="GET">
+			<label for="number">Number Player</label>
+			<select class="form-control selectpicker" name="number" multiple>
+				<%if(search.number){%>
+					<%if(typeof(search.number) === 'string'){%>
+						<%for(var i = 1; i < 5; i++){%>
+							<%if(search.number == i){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%}%>
+					<%}else{%>
+						<%for(var i = 1; i < 5; i++){%>
+							<%if(search.number.indexOf(i.toString()) > -1){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%}%>
+					<%}%>
+				<%}else{%>
+					<%for(var i = 1; i < 5; i++){%>
+						<option value=<%=i%>><%=i%></option>
+					<%}%>
+				<%}%>
+				<!-- <option value=1>1</option>
+				<option value=2>2</option>
+				<option value=3>3</option>
+				<option value=4>4</option> -->
+			</select>
+			<label for="queue">Queue</label>
+			<select class="form-control selectpicker" name="queue" multiple>
+				<%if(search.queue){%>
+					<%if(typeof(search.queue) === 'string'){%>
+						<%map.queue.forEach(function(i){%>
+							<%if(search.queue == i){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%})%>
+					<%}else{%>
+						<%map.queue.forEach(function(i){%>
+							<%if(search.queue.indexOf(i) > -1){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%})%>
+					<%}%>
+				<%}else{%>
+					<%map.queue.forEach(function(i){%>
+						<option value=<%=i%>><%=i%></option>
+					<%})%>
+				<%}%>
+			</select>
+			<label for="rank">Rank</label>
+			<select class="form-control selectpicker" name="rank" multiple>
+				<%if(search.rank){%>
+					<%if(typeof(search.rank) === 'string'){%>
+						<%map.rank.forEach(function(i){%>
+							<%if(search.rank == i){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%})%>
+					<%}else{%>
+						<%map.rank.forEach(function(i){%>
+							<%if(search.rank.indexOf(i) > -1){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%})%>
+					<%}%>
+				<%}else{%>
+					<%map.rank.forEach(function(i){%>
+						<option value=<%=i%>><%=i%></option>
+					<%})%>
+				<%}%>
+
+			</select>
+			<label for="position">Positions</label>
+			<select class="form-control selectpicker" name="position" multiple>
+				<%if(search.position){%>
+					<%if(typeof(search.position) === 'string'){%>
+						<%map.position.forEach(function(i){%>
+							<%if(search.position == i){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%})%>
+					<%}else{%>
+						<%map.position.forEach(function(i){%>
+							<%if(search.position.indexOf(i) > -1){%>
+								<option value=<%=i%> selected><%=i%></option>
+							<%}else{%>
+								<option value=<%=i%>><%=i%></option>
+							<%}%>
+						<%})%>
+					<%}%>
+				<%}else{%>
+					<%map.position.forEach(function(i){%>
+						<option value=<%=i%>><%=i%></option>
+					<%})%>
+				<%}%>
+			</select>
+			<button class="btn btn-lg btn-primary float-right">Submit</button>
+		</form>
+	</div>

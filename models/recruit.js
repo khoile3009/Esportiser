@@ -13,6 +13,7 @@ var recruitSchema = new mongoose.Schema({
 	queue: String, 
 	rank: String,
 	position: [String],
+	expire_at: {type: Date, default: Date.now, expires: Number},
 	application:{
 		user: {
 			id: {

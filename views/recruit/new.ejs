@@ -51,7 +51,16 @@
 					<p>Description</p>
 					<input class="form-control" type="text" name="description" placeholder="description">
 				</div>
-
+				<div class="form-group">
+					<p>Open time</p>
+					<select class="form-control selectpicker" name="expire_at">
+						<option value=10>10 Minutes (Free)</option>
+						<option value=60>1 Hour (1USD)</option>
+						<option value=120>2 Hours (2USD)</option>
+						<option value=480>8 Hours (5USD)</option>
+						<option value=1440>1 Day (10USD)</option>
+					</select>
+				</div>
 				<div class="form-group">
 					<button class="btn btn-lg btn-primary btn-block">Submit</button>
 				</div>	
