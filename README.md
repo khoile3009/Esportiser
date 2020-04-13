@@ -12,4 +12,5 @@ An Esport portal for Vietnamese to host Tournaments for different games to marke
  
 * Task to be done
   * Migrate to using Django + PosgresSQL for backend system
+  * Turn into onepage website with React
   
